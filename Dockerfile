@@ -18,14 +18,14 @@ ARG JENKINS_STAGING=/usr/share/jenkins/ref/
 USER root
 
 # install dependencies
-RUN apt-get update && apt-get install -y nginx python zip jq gnupg build-essential
+RUN apt-get update && apt-get install -y nginx python zip jq ruby gem
 # Get RVM to install ruby 2.1.8
-RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
-  && curl -sSL https://get.rvm.io | bash -s stable \
+# RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
+#  && curl -sSL https://get.rvm.io | bash -s stable \
 #  && usermod -a -G rvm `whoami` \
-  && rvm install ruby-2.1.8 \
-  && rvm --default use ruby-2.1.8 \
-  && gem install bundler --no-rdoc --no-ri
+#  && /usr/local/rvm/bin/rvm install ruby-2.1.8 \
+#  && /usr/local/rvm/bin/rvm --default use ruby-2.1.8 \
+#  && /usr/bin/gem install bundler --no-rdoc --no-ri
 # Grab gem dependencies for running puppet tests
 RUN gem install puppet puppet-lint puppet-syntax rake rspec rspec-puppet rspec-puppet-utils
 # libmesos bundle
