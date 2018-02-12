@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y nginx python zip jq gnupg build-essenti
 # Get RVM to install ruby 2.1.8
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
   && curl -sSL https://get.rvm.io | bash -s stable \
-  && usermod -a -G rvm `whoami` \
+#  && usermod -a -G rvm `whoami` \
   && rvm install ruby-2.1.8 \
   && rvm --default use ruby-2.1.8 \
   && gem install bundler --no-rdoc --no-ri
